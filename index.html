@@ -202,6 +202,10 @@
 
   /* 版本号：用来确认手机打开的是不是最新版 */
   #ver{position:fixed;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:70;pointer-events:none;font:10px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.1em;color:rgba(255,255,255,.35)}
+
+  /* 价格：整个价格列表外面加一个细框 */
+  .pricebg .plist{border:1px solid rgba(255,255,255,.3);padding:14px 16px;position:relative}
+  .pricebg .plist::before{content:"";position:absolute;inset:4px;border:1px solid rgba(255,255,255,.1);pointer-events:none}
 </style>
 </head>
 <body>
@@ -212,7 +216,7 @@
 </div>
 
 <div id="lb"><img alt=""></div>
-<div id="ver">v37</div>
+<div id="ver">v38</div>
 <canvas id="glass"></canvas>
 
 <!-- 背景音乐：单曲循环 -->
@@ -273,7 +277,7 @@
     <div class="pitem"><div class="k">虐恋<small>Painful love</small></div><div class="v">45<i>/</i>27</div></div>
     <div class="pitem"><div class="k">普陪<small>Company</small></div><div class="v">38<i>/</i>20</div></div>
     <div class="pitem addon"><div class="k">加价区<small>Extra</small></div><div class="ad">
-      <div><span>旁边</span><b>6</b></div>
+      <div><span>旁观</span><b>6</b></div>
       <div><span><em>夜</em>间</span><b>4 / 0.5h</b></div>
       <div><span>单口</span><b>5</b></div>
     </div></div>
