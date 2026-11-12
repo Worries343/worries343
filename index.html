@@ -199,6 +199,9 @@
   #lb.on img{animation:lbImgIn 1s cubic-bezier(.22,.61,.36,1) backwards}
   #lb.closing{animation:lbOut .55s ease forwards}
   @media (prefers-reduced-motion:reduce){section.pg-in,section.pg-out,.silk,.silk-nb,.silk-out,.silk-out-nb,#lb.on,#lb.on img,#lb.closing{animation-duration:.01s!important}}
+
+  /* 版本号：用来确认手机打开的是不是最新版 */
+  #ver{position:fixed;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:70;pointer-events:none;font:10px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.1em;color:rgba(255,255,255,.35)}
 </style>
 </head>
 <body>
@@ -209,6 +212,7 @@
 </div>
 
 <div id="lb"><img alt=""></div>
+<div id="ver">v37</div>
 <canvas id="glass"></canvas>
 
 <!-- 背景音乐：单曲循环 -->
