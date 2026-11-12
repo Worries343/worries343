@@ -171,6 +171,11 @@
   .gallery .gi{margin:0}
   .gallery .gi .pic{width:100%;aspect-ratio:3/4;object-fit:cover;margin:0 0 4px;border:none;box-shadow:0 4px 12px rgba(0,0,0,.4)}
   .gallery .gi .num{font-size:10px;margin:0;text-align:center;letter-spacing:.15em}
+
+  /* 进入主页时诗句从模糊中慢慢浮现 */
+  #home .verse>div{transition:opacity 2.6s ease .3s,filter 2.6s ease .3s}
+  #home .verse.pre>div{opacity:0;filter:blur(8px)}
+
 </style>
 </head>
 <body>
@@ -364,11 +369,23 @@
     '你<span class="sp">竟然</span>只有<span class="sp">轮廓</span><small>转瞬 即逝</small>'
   ];
   const intro=document.getElementById('intro'), itext=document.getElementById('itext');
+  const hv=document.querySelector('#home .verse'); if(hv && !location.hash) hv.classList.add('pre');
   let step=0, busy=false, introOn=true;
   itext.innerHTML=lines[0];
   intro.addEventListener('click',()=>{
     if(busy) return; busy=true; step++;
-    if(step>=lines.length){ intro.classList.add('out'); introOn=false; setTimeout(()=>intro.remove(),1000); return; }
+    if(step>=lines.length){
+      // 进入主页：和前面换字一样的模糊淡出，但整体放慢
+      itext.style.transition='opacity 1.6s ease, filter 1.6s ease';
+      itext.classList.add('hide');
+      setTimeout(()=>{
+        intro.style.transition='opacity 2.4s ease';
+        intro.classList.add('out'); introOn=false;
+        if(hv) hv.classList.remove('pre');
+        setTimeout(()=>intro.remove(),2500);
+      },1400);
+      return;
+    }
     itext.classList.add('hide');
     setTimeout(()=>{ itext.innerHTML=lines[step]; itext.classList.remove('hide'); busy=false; },800);
   });
